@@ -2,6 +2,11 @@
 // https://github.com/clowwindy/gfwlist2pac
 
 var domains = {
+//
+  "ip138.com": 1,
+  "live.com": 1,
+  "goo.gl": 1,
+//
   "gimpshop.com": 1, 
   "directcreative.com": 1, 
   "speedpluss.org": 1, 
@@ -2477,7 +2482,7 @@ var domains = {
   "1-apple.com.tw": 1
 };
 
-var proxy = "SOCKS5 127.0.0.1:1080; SOCKS 127.0.0.1:1080; DIRECT;";
+var proxy = "__PROXY__";
 
 var direct = 'DIRECT;';
 
