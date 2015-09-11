@@ -1,0 +1,52 @@
+apt-get update
+apt-get install php5-fpm php5-gd php5-mcrypt nginx mysql-server php5-mysql
+
+vi /etc/nginx/sites-enabled/default
+server
+	root /var/www/default;
+	index index.html index.htm index.php;
+		
+	location ~ \.php$ {
+		fastsgi_split_path_info ^(.+\.php)(/.+)$;
+		fastcgi_pass unix:/var/run/php5-fpm.sock;
+		fastcgi_index index.php;
+		include fastcgi_params;
+	}
+	
+mkdir -p /var/www/default/
+cd /var/www/default
+vi index_p.php
+<?php
+phpinfo();
+?>
+
+apt-get install phpmyadmin
+ln -s /usr/share/phpmyadmin/ /var/www/default/
+
+mysql -u root -p
+create database wordpress;
+exit
+
+wget -c http://wordpress.org/latest.zip
+unzip latest.zip
+mv ./wordpress/* /var/www/default/
+
+cd /var/www/
+chown -R www-data:www-data default/
+
+vi /etc/php5/fpm/php.ini
+cgi.fix_pathinfo = 0
+upload_max_filesize = 20M
+post_max_size = 20M
+expose_php = off
+max_execution_time = 90
+memory_limit = 256M
+
+service php5-fpm restart
+
+ps
+/etc/php5/fpm/php-fpm.conf
+/etc/php5/fpm/php.ini
+/etc/php5/fpm/pool.d/www.conf
+/etc/nginx/sites-enabled/default
+/etc/mysql/my.cnf
