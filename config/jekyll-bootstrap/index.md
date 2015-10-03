@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Hello World!
-tagline: ifslfjlsafjlas
+tagline: Explore Everything
 ---
 {% include JB/setup %}
 
