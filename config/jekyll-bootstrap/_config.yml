@@ -13,9 +13,9 @@ title : fb2kfans
 tagline: Explore Everything
 author :
   name : fb2kfans
-  email : blah@email.test
-  github : username
-  twitter : username
+  email : your-email@domain.com
+  github : jekyll
+  twitter : jekyllrb
   feedburner : feedname
 
 # The production_url is only used when full-domain names are needed
